@@ -1,0 +1,97 @@
+<template name="memberEdit">
+	<div class="name-group inline member">
+	<form class="main">
+		<hr>
+		<!-- Specify a name for the url that will have this member's profile -->
+		<p style="color:red;"></p>
+		{{#if isInRole 'admin'}}
+			<label class="control-label" for="routeName">Route Name:</label>
+			<input type="text" name="routeName" value="{{routeName}}" placeholder="" />
+		{{/if}}
+		<!-- Email address to associate with this user -->
+		<label class="control-label" for="email2">Secondary Email:</label>
+		<input type="email" name="email2" value="{{email2}}" placeholder="" />
+		<!-- Photo Url -->
+		<label class="control-label" for="imageUrl">Photo Url</label>
+		<input name="image_url" type="url" value="{{imageUrl}}" placeholder="image url" />
+		{{#if imageUrl}}
+			<img style="height:120px; width:auto;" src="{{imageUrl}}">
+		{{/if}}
+		<hr>
+		<!-- Prefix -->
+		<label class="control-label" for="prefix">Prefix</label>
+		<input class="psfix" name="prefix" type="text" value="{{prefix}}" placeholder="Dr." />
+		<!-- First Name -->
+		<label class="control-label" for="firstname">First Name</label>
+		<input name="firstname" type="text" value="{{firstname}}" placeholder="first name" />
+		<!-- Last Name -->
+		<label class="control-label" for="lastname">Last Name</label>
+		<input name="lastname" type="text" value="{{lastname}}" placeholder="last name" />
+		<!-- Suffix -->
+		<label class="control-label" for="suffix">Suffix</label>
+		<input class="psfix" name="suffix" type="text" value="{{suffix}}" placeholder="suffix" />
+		<!-- Title -->
+		<label class="control-label" for="title">Title</label>
+		<input name="title" type="text" value="{{title}}" placeholder="Professor, assistant, etc." />
+		<hr>
+		<!-- Institution 1 -->
+		<div class="institution_group">
+			<label class="control-label" for="institutions">Institutions</label>
+			<input name="institutions" class="institutions" type="text" value="" placeholder="organization name" />
+		</div>
+		<br>
+		<button id="add_institutions" type="text" class="btn-danger btn">Add Institutions</button>
+		<hr>
+		<!-- Lab Name -->
+		<label class="control-label" for="address1">Lab Name</label>
+		<input name="labName" type="text" value="{{labName}}" placeholder="" />
+		<!-- Lab Address -->
+		<label class="control-label" for="address1">Lab Address</label>
+		<input name="address1" type="text" value="{{labAddress1}}" placeholder="" />
+		<!-- Lab Address line 2 -->
+		<label class="control-label" for="address2">Lab Address line 2</label>
+		<input name="address2" type="text" value="{{labAddress2}}" placeholder="" />
+		<hr>
+		<!-- City -->
+		<label class="control-label" for="city">City</label>
+		<input name="city" type="text" value="{{city}}" placeholder="" />
+		<!-- State -->
+		<label class="control-label" for="state">State</label>
+		<input class="psfix" name="state" type="text" value="{{state}}" placeholder="TX, etc." />
+		<!-- Zip -->
+		<label class="control-label" for="zip">Zip</label>
+		<input class="psfix" name="zip" type="text" value="{{zip}}" placeholder="" />
+		<!-- Country -->
+		<label class="control-label" for="country">Country</label>
+		<input name="country" type="text" value="{{country}}" placeholder="United States" />
+		<!-- Lab Phone -->
+		<label class="control-label" for="phone">Lab Phone</label>
+		<input name="phone" type="text" value="{{labPhone}}" placeholder="(555) 555-5555" />
+		<hr>
+		<!-- Research Interests Keywords -->
+		<label class="control-label" for="research_interests">Research Interests (keywords)</label>
+		<input name="riKeywords" type="text" value="{{riKeywords}}" placeholder="" />
+		<!-- Professional Associations -->
+		<hr>
+		<div class="associations_group">
+		<label class="control-label" for="associations">Professional Associations</label>
+		<input name="associations" class="associations" type="text" value="" placeholder="association name" />
+		</div>
+		<br>
+		<button id="add_associations" class="btn-danger btn">Add Associations</button>
+		<!-- Lab Associates -->
+		<hr>
+		<div class="associates_group">
+		<label class="control-label" for="labAssociates">Lab Associates</label>
+		<input class="associates" name="labAssociates" type="text" value="" placeholder="associate name" />
+		</div>
+		<br>
+		<button id="add_associates" class="btn-danger btn">Add Lab Associates</button>
+		<hr>
+		<input id="form_submit" type="submit" value="Submit" class="btn btn-primary" />
+		{{#if isInRole 'admin'}}
+			<a class="btn btn-danger delete" href="#">Delete Member</a>
+		{{/if}}
+	</form>
+</div>
+</template>

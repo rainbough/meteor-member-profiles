@@ -1,0 +1,81 @@
+<template name="memberProfile">
+    <div class="member members">
+        {{#if currentUser}}
+            {{#if ownsProfile}}
+                <a class="btn btn-success pull-right" style="color:white;" href="{{pathFor 'memberEdit'}}">Edit Profile</a>
+            {{/if}}
+        {{/if}}
+        {{#if isInRole 'admin'}}
+            <div class="navbar-right">
+                <button type="button" id="delete" class="btn btn-danger navbar-right">Delete</button><button id="edit" type="button" class="btn btn-warning navbar-right">Edit</button>
+            </div>
+        {{/if}}
+        <div class="member-profile">
+            <!-- **************************************** -->
+            <!-- This is where the profile display begins -->
+            <div class="profile">
+                <h2>{{prefix}} {{firstname}} {{lastname}} {{suffix}}</h2>
+                <div class="title-group inline">
+                    <h3><span> {{organization}}</span></h3>
+                    {{#if title}}
+                        <h4>{{title}}</h4>
+                    {{/if}}
+                </div>
+                {{#if imageUrl}}
+                    <div class="profile-pic-large pull-right inline">
+                        <img src="{{imageUrl}}" />
+                    </div>
+                {{/if}}
+                <br>
+                {{#if institutions.length}}
+                    <div class="affiliations inline">
+                        <h5>Affiliations:</h5>
+                        {{#each institutions}}
+                            <div>{{this}}</div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if riKeywords}}
+                    <div>{{riKeywords}}</div>
+                {{/if}}
+                {{#if associations.length}}
+                    <div class="associations">
+                        <h4>Professional Associations:</h4>
+                        {{#each associations}}
+                            <div>{{this}}</div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if labAssociates.length}}
+                    <div class="associates">
+                        <h5>Lab Associates:</h5>
+                        {{#each labAssociates}}
+                            <div>{{this}}</div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if labName}}
+                    <div class="lab-group">
+                        <h4>{{labName}}</h4>
+                        {{#if labAddress1}}
+                            <p>{{labAddress1}} {{labAddress2}}</p>
+                            <p>{{city}}, {{state}} {{zip}}</p>
+                            <p>{{country}}</p>
+                        {{/if}}
+                        {{#if labPhone}}
+                            <h5>Phone: {{labPhone}}</h5>
+                        {{/if}}
+                    </div>
+                {{/if}}
+                {{#if email}}
+                    <div><strong>Contact: </strong><p>{{email}}</p></div>
+                {{/if}}
+                <!-- Profile data ends here! -->
+                <!-- ************************** -->
+            </div>
+        </div>
+    </div>
+    {{#if isInRole 'admin'}}
+        <a href="{{pathFor 'adminEmailNewMember'}}"><h4>Send Email Page</h4></a>
+    {{/if}}
+</template>

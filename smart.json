@@ -1,0 +1,15 @@
+{
+    "name": "member-profiles",
+    "description": "Members collection and profile template for meteor",
+    "homepage": "",
+    "author": "Rainbough Phillips  (http://rainboughblog.herokuapp.com)",
+    "version": "0.0.1",
+    "git": "",
+    "packages": {
+        "errors": {
+        	"git": "https://github.com/tmeasday/meteor-errors/"
+        },
+        "iron-router": {},
+        "bootstrap-3": {}
+    }
+}

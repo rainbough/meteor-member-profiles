@@ -1,0 +1,10 @@
+<template name="membersList">
+	<div class="container">
+		<p><a href="{{ pathFor 'newMember' }}">Create New Member Profile</a></p>
+		<div class="members">
+			{{#each members}}
+				{{> memberLink}}
+			{{/each}}
+		</div>
+	</div>
+</template>
