@@ -26,7 +26,8 @@ Members.deny({
 
 Meteor.methods({
 	member: function(memberAttributes) {
-		var user = Meteor.user(),
+		// var user = Meteor.user(),
+		var email = memberAttributes.email;
 		memberWithSameEmail = Members.findOne({ email: memberAttributes.email });
 
 		var trimInput = function(val) {
@@ -36,8 +37,8 @@ Meteor.methods({
 
       	var uniqueRouteName = Members.findOne({routeName: trimRouteName});
 		// ensure the user is logged in
-		if (!user)
-			throw new Meteor.Error(401, "You need to login to Create a New Member Profile");
+		if (!email)
+			throw new Meteor.Error(401, "Please enter an email address for this member");
 		if(!memberAttributes.routeName)
 			throw new Meteor.Error(422, "Please Enter a route name.")
 		// ensure members have names
