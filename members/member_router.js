@@ -1,7 +1,10 @@
 Router.map(function() { 
 	this.route('membersList', {
 		path: '/members',
-		controller: MembersControler
+		controller: MembersControler,
+		data: function() {
+			return Members.findOne({routeName: this.params.routeName}); 
+		}
 	});
 	this.route('memberProfile', {
 		path: '/members/:routeName',

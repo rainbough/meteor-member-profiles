@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-	api.use('standard-app-packages', 'accounts-base' ['client', 'server']);
+	api.use('standard-app-packages', 'accounts-base', 'accounts-password' ['client', 'server']);
 	api.use('templating', 'client');
 
   	api.use([ 'iron-router', 'bootstrap-3', 'errors'], ['client']);
