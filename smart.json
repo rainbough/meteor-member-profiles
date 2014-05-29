@@ -12,7 +12,9 @@
         "roles": {
             "git": "https://github.com/alanning/meteor-roles.git"
         },
-        "iron-router": {},
+        "iron-router": {
+            "git": "https://github.com/EventedMind/iron-router.git"
+            },
         "bootstrap-3": {}
     }
 }
