@@ -1,0 +1,91 @@
+<!-- This is the full member list that shows up at /members -->
+
+<template name="membersList">
+	<div class="container">
+		<p><a href="{{ pathFor 'newMember' }}">Create New Member Profile</a></p>
+		<div class="members">
+			<h3>Member Profiles</h3>
+			{{#each members}}
+				{{> memberLink}}
+				<hr>
+			{{/each}}
+		</div>
+	</div>
+</template>
+
+<!-- This is the member link template -->
+<template name="memberLink">
+    <div class="member member-link">
+        {{#if imageUrl}}
+            <div class="profile-pic pull-left inline">
+                <img src="{{imageUrl}}" />
+            </div>
+        {{/if}}
+        <div class="member-content inline">
+            <div class="member-list inline">
+                <h3><a href="{{pathFor 'memberProfile'}}">{{prefix}} {{firstname}} {{lastname}} {{suffix}}</a><span>{{interests}}</span></h3>
+            </div>
+        </div>
+    {{#if currentUser}}
+        <button id="edit" type="button" class="btn btn-warning navbar-right">Edit</button>
+        <button type="button" id="delete" class="btn btn-danger navbar-right">Delete</button>
+    {{/if}}
+    </div>
+</template>
+
+<!-- This is the member profile -->
+<template name="memberProfile">
+    <div class="member members">
+        {{#if currentUser}}
+            <div class="navbar-right">
+                <button id="edit" type="button" class="btn btn-warning navbar-right">Edit</button>
+                 <button type="button" id="delete" class="btn btn-danger navbar-right">Delete</button>
+
+            </div>
+        {{/if}}
+        <div class="member-profile">
+            <!-- **************************************** -->
+            <!-- This is where the profile display begins -->
+            <div class="profile">
+                {{#if imageUrl}}
+                <div class="profile-pic-large pull-right inline">
+                    <div id="image-frame">
+                        <img src="{{imageUrl}}" />
+                    </div>
+                </div>
+                {{/if}}
+                <h2>{{prefix}} {{firstname}} {{lastname}} {{suffix}}</h2>
+                <div class="title-group inline">
+                    <h3><span> {{organization}}</span></h3>
+                    {{#if title}}
+                        <h4>{{title}}</h4>
+                    {{/if}}
+                </div>
+                {{#if interests}}
+                    <div>{{interests}}</div>
+                {{/if}}
+           
+                
+                {{#if city}}
+                <p>{{city}}, {{state}}</p>
+                {{/if}}
+                <p>{{country}}</p>
+          
+                {{#if interests}}
+                <h5>{{interests}}</h5>
+                {{/if}}
+                 
+    
+                {{#if email}}
+                    <div><strong>Contact: </strong><p>{{email}}</p></div>
+                {{/if}}
+                {{#if description}}
+                    <p>{{description}}</p>
+                {{/if}}
+                <!-- Profile data ends here! -->
+                <!-- ************************** -->
+
+            </div>
+        </div>
+    </div>
+</template>

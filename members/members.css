@@ -1,0 +1,79 @@
+
+.members{
+	color: #666666;
+	background: #fff;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+.member.members{
+	padding: 20px;
+}
+button#edit{
+	border-radius: 0 5px 5px 0;
+}
+button#delete{
+	border-radius: 5px 0 0 5px;
+}
+#image-frame{
+	height: 200px;
+	width: 200px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+.member-link{
+	margin: 10px;
+}
+
+.psfix{
+	width: 50px;
+}
+.profile-pic img{
+	height:50px;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+}
+.profile-pic-large img{
+	height: 250px;
+}
+.inline{
+	display: inline-block;
+	margin-right: 10px;
+}	
+
+.member {
+	position: relative;
+	padding: 5px;
+	opacity: 1;
+}
+.member:before, .member:after {
+	content: "";
+	display: table; 
+}
+.member:after { clear: both } 
+
+.member-profile { height: auto;}
+.member .member-content { float: left } 
+.member .member-content h3 {
+	margin: 0; 
+	line-height: 1.4; 
+	font-size: 18px;
+}
+.member .member-content h3 a {
+	display: inline-block;
+	margin-right: 5px; 
+}
+.member .member-content h3 span { 
+	font-weight: normal; 
+	font-size: 14px;
+	display: inline-block; 
+	color: #aaaaaa;
+}
+.member .member-content p { margin: 0 } 
+.member .view {
+	display: block; 
+	float: right; 
+	margin-top: 7px;
+}

@@ -1,18 +1,34 @@
+// create member collection
 Members = new Meteor.Collection('members');
 
-// see ownsProfile and adminUser functions in lib/permissions.js
-// This allows client side editing and deleting of member profiles
+// publish member collection
+if(Meteor.isServer){
+	Meteor.publish('members', function() { 
+		return Members.find();
+	});
+}
+
+// these functions define the permissions used in the allow function below
+ownsProfile = function(userId, doc){
+	user = Meteor.user();
+	userEmail = user.emails[0].address;
+	return doc && doc.email === userEmail;
+}
+adminUser = function(){
+	user = Meteor.user();
+	return Roles.userIsInRole(user, 'admin');
+}
+
+// This sets permissions for client side editting and deleteing of member profiles
 Members.allow({
 	update: ownsProfile,
 	remove: ownsProfile
 });
+Members.allow({
+	update: adminUser,
+	remove: adminUser
+});
 
-ownsProfile = function(userId, doc){
-	user = Meteor.user();
-	return doc && doc.user_id === user._id;
-	console.log(userId);
-	console.log("doc.user_id: "+ doc.user_id);
-}
 
 // this restricts client side editing of fields not on this list.
 // It uses _.without to return an array of any updates to fields not listed.
@@ -27,7 +43,6 @@ Members.deny({
 Meteor.methods({
 	member: function(memberAttributes) {
 		var user = Meteor.user(),
-		var email = memberAttributes.email;
 		memberWithSameEmail = Members.findOne({ email: memberAttributes.email });
 
 		var trimInput = function(val) {
@@ -36,13 +51,9 @@ Meteor.methods({
       	var trimRouteName = trimInput(memberAttributes.routeName);
 
       	var uniqueRouteName = Members.findOne({routeName: trimRouteName});
-
 		// ensure the user is logged in
-		if(!user)
-			throw new Meteor.Error(401, "Please login to create a member profile");
-		// ensure an email address is entered
-		if (!email)
-			throw new Meteor.Error(422, "Please enter an email address for this member");
+		if (!user)
+			throw new Meteor.Error(401, "You need to login to Create a New Member Profile");
 		if(!memberAttributes.routeName)
 			throw new Meteor.Error(422, "Please Enter a route name.")
 		// ensure members have names
