@@ -2,21 +2,13 @@
     "name": "member-profiles",
     "description": "Members collection and profile template for meteor",
     "homepage": "",
-    "author": "Rainbough Phillips  (http://rainboughblog.herokuapp.com)",
+    "author": "Rainbough Phillips  (http://www.rainboughphillips.com)",
     "version": "0.0.1",
-    "git": "",
+    "git": "https://github.com/rainbough/meteor-member-profiles",
     "packages": {
-        "errors": {
-        	"git": "https://github.com/tmeasday/meteor-errors.git"
-        },
-        "roles": {
-            "git": "https://github.com/alanning/meteor-roles.git"
-        },
-        "iron-router": {
-            "git": "https://github.com/EventedMind/iron-router.git"
-            },
-        "bootstrap-3": {
-            "git": "https://github.com/mangasocial/meteor-bootstrap-3.git"
-        }
+        "errors": {},
+        "roles": {},
+        "iron-router": {},
+        "bootstrap-3": {}
     }
 }
